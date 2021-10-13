@@ -1,2 +1,2 @@
 # DataSelection-NMT
-Generating Parallel In-domain Sentences Using Monolingual Texts for Neural Machine Translation
+Selecting Parallel In-domain Sentences for Neural Machine Translation Using Monolingual Texts
