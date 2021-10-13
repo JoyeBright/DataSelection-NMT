@@ -1,0 +1,2 @@
+Selected-data-with-mixing/*.txt filter=lfs diff=lfs merge=lfs -text
+Selected-data-with-mixing/withoutID_individual.corpus.top5.fr.txt filter=lfs diff=lfs merge=lfs -text
