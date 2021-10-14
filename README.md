@@ -22,7 +22,7 @@ Follow steps below to translate your sentences:
 pip install --upgrade pip
 pip install ctranslate2
 ```
-2\. **Download models from our [HF repository](#huggingface):**
+2\. **Download models from our [HF repository](#Our Pre-trained models on Hugging Face):**
 
 
 
