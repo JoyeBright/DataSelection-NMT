@@ -22,7 +22,16 @@ Follow steps below to translate your sentences:
 pip install --upgrade pip
 pip install ctranslate2
 ```
-2\. **Download models from our HF repository:**
+2\. **Download models from our [HF repository](#Our-Pre-trained-models-on-Hugging-Face):**
+You can do this manually or use the following python script:
+```python
+import requests
 
+url = <Download Link>
+directory_name = <Directory Name>
+r = requests.get(url, allow_redirects=True)
+open(directory_name, 'wb').write(r.content)
+```
+3\. **Convert the downloaded model:**
 
 
