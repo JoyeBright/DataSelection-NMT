@@ -64,5 +64,13 @@ tools/detokenize.perl -no-escape -l fr \
 > output_file.detok
 ```
 
-
+5\. **Remove the @@ tokens:**
+```bash
+cat output_file.detok | sed -E 's/(@@)|(@@ )|(@@ ?$)//g' \
+> output._file.detok.postprocessd
+```
+Use grep to check if @@ tokens removed successfully: 
+```bash
+grep @@ output._file.detok.postprocessd 
+```
 
