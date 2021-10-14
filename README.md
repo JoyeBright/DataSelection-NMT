@@ -50,9 +50,9 @@ or
 ```python
 import ctranslate2
 translator = ctranslate2.Translator("output_directory/")
-translator.translate_file(input_file.txt, output_file.txt, batch_type= "tokens/examples")
+translator.translate_file(input_file, output_file, batch_type= "tokens/examples")
 ```
-To customize the CTranslate2 functions, read this API document: https://github.com/OpenNMT/CTranslate2/blob/master/docs/python.md
+To customize the CTranslate2 functions, read this [API document](https://github.com/OpenNMT/CTranslate2/blob/master/docs/python.md).
 
 4\. **Detokenize the outputs:**
 
@@ -60,8 +60,8 @@ To customize the CTranslate2 functions, read this API document: https://github.c
 
 ```bash
 tools/detokenize.perl -no-escape -l fr \
-< output_file.txt \
-> output_file.detok.txt
+< output_file \
+> output_file.detok
 ```
 
 
