@@ -28,10 +28,20 @@ You can do this manually or use the following python script:
 import requests
 
 url = "Download Link"
-directory_name = "Directory Name"
+model_path = "Model Path"
 r = requests.get(url, allow_redirects=True)
-open(directory_name, 'wb').write(r.content)
+open(model_path, 'wb').write(r.content)
 ```
 3\. **Convert the downloaded model:**
+```bash
+ct2-opennmt-py-converter --model_path model_path --output_dir output_directory
+```
+3\. **Translate tokenized inputs:**
+**Note:** The inputs should be tokenized by [SentencePiece](https://github.com/google/sentencepiece). You can also use tokenized version of IWSLT test sets. They are under the **Data-Table1** directory.
+```python
+import ctranslate2
+translator = ctranslate2.Translator("output_directory/")
+translator.translate_batch([["▁H", "ello", "▁world", "!"]])
+```
 
 
