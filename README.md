@@ -77,5 +77,5 @@ grep @@ output._file.detok.postprocessd
 ## Authors
 
 - **Javad Pourmostafa**  - [Email](mailto:j.pourmostafa@tilburguniversity.edu), [Website](https://javad.pourmostafa.com)
-- **Dimitar Shterionov** - [Website](https://ilk.uvt.nl/~shterion/)
-- **Pieter Spronck**     - [Website](https://www.spronck.net/)
+- **Dimitar Shterionov** - [Email](mailto:d.shterionov@tilburguniversity.edu), [Website](https://ilk.uvt.nl/~shterion/)
+- **Pieter Spronck**     - [Email](mailto:p.spronck@tilburguniversity.edu), [Website](https://www.spronck.net/)
