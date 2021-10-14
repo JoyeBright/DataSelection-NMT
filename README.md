@@ -56,10 +56,10 @@ To customize the CTranslate2 functions, read this API document: https://github.c
 
 4\. **Detokenize the outputs:**
 
-**Note:** you need to tokenize the output with the same sentencepiece model as used in step 3.
+**Note:** you need to [detokenize](https://github.com/moses-smt/mosesdecoder/blob/master/scripts/tokenizer/detokenizer.perl) the output with the same sentencepiece model as used in step 3.
 
 ```bash
-/roaming/NMT-Framework-Joey/OpenNMT-py/tools/detokenize.perl -no-escape -l fr \
+tools/detokenize.perl -no-escape -l fr \
 < top6-without-mixing-new/output.txt \
 > top6-without-mixing-new/output.detok.txt
 ```
