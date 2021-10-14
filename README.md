@@ -74,3 +74,8 @@ Use grep to check if @@ tokens removed successfully:
 grep @@ output._file.detok.postprocessd 
 ```
 
+## Authors
+
+- **Javad Pourmostafa**  - [Email](mailto:j.pourmostafa@tilburguniversity.edu), [Website](https://javad.pourmostafa.com)
+- **Dimitar Shterionov** - [Website](https://ilk.uvt.nl/~shterion/)
+- **Pieter Spronck**     - [Website](https://www.spronck.net/)
