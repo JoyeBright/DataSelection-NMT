@@ -38,7 +38,8 @@ ct2-opennmt-py-converter --model_path model_path --output_dir output_directory
 ```
 3\. **Translate tokenized inputs:**
 
-**Note:** the inputs should be tokenized by [SentencePiece](https://github.com/google/sentencepiece). You can also use tokenized version of [IWSLT test sets](https://github.com/JoyeBright/DataSelection-NMT/tree/main/Data-Table1/Dev%20and%20Test%20Sets).
+**Note:** the inputs should be tokenized by [SentencePiece](https://github.com/google/sentencepiece). 
+You can also use tokenized version of [IWSLT test sets](https://github.com/JoyeBright/DataSelection-NMT/tree/main/Data-Table1/Dev%20and%20Test%20Sets).
 
 ```python
 import ctranslate2
@@ -52,6 +53,7 @@ translator = ctranslate2.Translator("output_directory/")
 translator.translate_file(source_path_file, output_path_file, batch_type= "tokens/examples")
 ```
 To customize the CTranslate2 functions, read this API document: https://github.com/OpenNMT/CTranslate2/blob/master/docs/python.md
+
 4\. **Detokenize the outputs:**
 
 **Note:** you need to tokenize the output with the same sentencepiece model as used in step 3.
