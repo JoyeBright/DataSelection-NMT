@@ -1,7 +1,7 @@
 # DataSelection-NMT
 Selecting Parallel In-domain Sentences for Neural Machine Translation Using Monolingual Texts
 
-# Our Pre-trained models on Hugging Face
+## Our Pre-trained models on Hugging Face
 |Systems        | Link | Systems | Link | 
 |:-------------:|:----:|:-------:|:----:|
 |Top1         |[Download](https://huggingface.co/joyebright/Top1-with-without-mixing/resolve/main/Top1-withBPE-step-5000.pt)|Top1|[Download](https://huggingface.co/joyebright/Top1-with-without-mixing/resolve/main/Top1-withBPE-step-5000.pt)|  
@@ -22,7 +22,7 @@ Follow steps below to translate your sentences:
 pip install --upgrade pip
 pip install ctranslate2
 ```
-2\. **Download models from our [HF repository](#Our):**
+2\. **Download models from our HF repository:**
 
 
 
