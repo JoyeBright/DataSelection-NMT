@@ -51,6 +51,8 @@ import ctranslate2
 translator = ctranslate2.Translator("output_directory/")
 translator.translate_file(source_path_file, output_path_file, batch_type= "tokens/examples")
 ```
+To customize the CTranslate2 functions, read this API document: https://github.com/OpenNMT/CTranslate2/blob/master/docs/python.md
+
 
 
 
