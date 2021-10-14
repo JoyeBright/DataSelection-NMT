@@ -38,7 +38,10 @@ ct2-opennmt-py-converter --model_path model_path --output_dir output_directory
 ```
 3\. **Translate tokenized inputs:**
 
-**Note:** The inputs should be tokenized by [SentencePiece](https://github.com/google/sentencepiece). You can also use tokenized version of IWSLT test sets. They are under the **Data-Table1** directory.
+**Note:** The inputs should be tokenized by [SentencePiece](https://github.com/google/sentencepiece).
+
+You can also use tokenized version of IWSLT test sets. They are under the **Data-Table1** directory.
+
 ```python
 import ctranslate2
 translator = ctranslate2.Translator("output_directory/")
