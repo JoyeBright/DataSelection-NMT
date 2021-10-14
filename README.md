@@ -27,8 +27,8 @@ You can do this manually or use the following python script:
 ```python
 import requests
 
-url = <Download Link>
-directory_name = <Directory Name>
+url = "Download Link"
+directory_name = "Directory Name"
 r = requests.get(url, allow_redirects=True)
 open(directory_name, 'wb').write(r.content)
 ```
