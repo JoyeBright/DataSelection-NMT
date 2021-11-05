@@ -1,4 +1,2 @@
-* linguist-vendored
-*.py linguist-vendored=false
 Selected-data-with-mixing/*.txt filter=lfs diff=lfs merge=lfs -text
 Selected-data-without-mixing/*.txt filter=lfs diff=lfs merge=lfs -text
