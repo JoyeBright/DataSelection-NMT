@@ -1,5 +1,6 @@
 # DataSelection-NMT
 Selecting Parallel In-domain Sentences for Neural Machine Translation Using Monolingual Texts
+#### Quick update: The paper got accepted on Dec 6, 2021! I will link the repository to the paper as soon as it got published. 
 
 ## Our Pre-trained models on Hugging Face
 |Systems        | Link | Systems | Link | 
