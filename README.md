@@ -1,5 +1,5 @@
 # DataSelection-NMT
-Selecting Parallel In-domain Sentences for Neural Machine Translation Using Monolingual Texts
+Welcome to the repository designed based on [FAIR principles](https://en.wikipedia.org/wiki/FAIR_data) for the experiments described in: "Selecting Parallel In-domain Sentences for Neural Machine Translation Using Monolingual Texts".
 #### Quick update: The paper got accepted on Dec 6, 2021! I will link the repository to the paper as soon as it got published.
 In the meantime, you can read the paper on [ArXiv](http://arxiv.org/abs/2112.06096) or [ResearchGate](https://www.researchgate.net/publication/357013946_Selecting_Parallel_In-domain_Sentences_for_Neural_Machine_Translation_Using_Monolingual_Texts).
 
