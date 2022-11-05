@@ -1,5 +1,8 @@
 # Data Selection in NMT
 Welcome to the repository designed based on [FAIR principles](https://en.wikipedia.org/wiki/FAIR_data) for the experiments described in: "Selecting Parallel In-domain Sentences for Neural Machine Translation Using Monolingual Texts".
+## Abstract
+Continuously-growing data volumes lead to larger generic models. Specific use-cases are usually left out, since generic models tend to perform poorly in domain-specific cases. Our work addresses this gap with a method for selecting in-domain data from generic-domain (parallel text) corpora, for the task of machine translation. The proposed method ranks sentences in parallel general-domain data according to their cosine similarity with a monolingual domain-specific data set. We then select the top K sentences with the highest similarity score to train a new machine translation system tuned to the specific in-domain data. Our experimental results show that models trained on this in-domain data outperform models trained on generic or a mixture of generic and domain data. That is, our method selects high-quality domain-specific training instances at low computational cost and data size.
+
 #### The paper got accepted on Dec 6, 2021 and got published on Feb, 2022.
 You can read the paper on [ArXiv](http://arxiv.org/abs/2112.06096), [ResearchGate](https://www.researchgate.net/publication/357013946_Selecting_Parallel_In-domain_Sentences_for_Neural_Machine_Translation_Using_Monolingual_Texts), [Publisher's website](https://www.clinjournal.org/index.php/clinj/article/view/137).
 
