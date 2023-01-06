@@ -16,7 +16,7 @@ You can read the paper on [ArXiv](http://arxiv.org/abs/2112.06096), [ResearchGat
 |Top5+Top4+...|[Download](https://huggingface.co/joyebright/Top5-with-mixing/resolve/main/top5-withBPE-step-20000.pt)|Top5|[Donwload](https://huggingface.co/joyebright/Top5-without-mixing/resolve/main/top5-withBPE-step-5000.pt)|
 |Top6+Top5+...|[Download](https://huggingface.co/joyebright/Top6-with-mixing/resolve/main/top6-withBPE-step-19000.pt)|Top6|[Donwload](https://huggingface.co/joyebright/Top6-without-mixing/resolve/main/top6-withBPE-step-5000.pt)|
 
-**Note:** Bandwidth for Git LFS of personal account is 1GB/month. If you're unable to download the models, check out this [link](https://huggingface.co/joyebright). 
+**Note:** Bandwidth for Git LFS of personal account is 1GB/month. If you're unable to download the models, follow this [link](https://huggingface.co/joyebright). 
 
 ## How to use
 **Note:** we ported the best checkpoints of trained models to the Hugging Face (HF). Since our models were trained by [OpenNMT-py](https://github.com/OpenNMT/OpenNMT-py), it was not possible to employ them directly for inference on HF. To bypass this issue, we use [CTranslate2](https://github.com/OpenNMT/CTranslate2)– an inference engine for transformer models.
