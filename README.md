@@ -60,7 +60,7 @@ translator.translate_file(input_file, output_file, batch_type= "tokens/examples"
 ```
 To customize the CTranslate2 functions, read this [API document](https://github.com/OpenNMT/CTranslate2/blob/master/docs/python.md).
 
-4\. **Detokenize the outputs:**
+5\. **Detokenize the outputs:**
 
 **Note:** you need to [detokenize](https://github.com/JoyeBright/DataSelection-NMT/blob/main/Tools/detokenizer.perl) the output with the same sentencepiece model as used in step 3.
 
@@ -70,7 +70,7 @@ tools/detokenize.perl -no-escape -l fr \
 > output_file.detok
 ```
 
-5\. **Remove the @@ tokens:**
+6\. **Remove the @@ tokens:**
 ```bash
 cat output_file.detok | sed -E 's/(@@)|(@@ )|(@@ ?$)//g' \
 > output._file.detok.postprocessd
