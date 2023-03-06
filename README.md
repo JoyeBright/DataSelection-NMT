@@ -42,7 +42,7 @@ open(model_path, 'wb').write(r.content)
 ```bash
 ct2-opennmt-py-converter --model_path model_path --output_dir output_directory
 ```
-3\. **Translate tokenized inputs:**
+4\. **Translate tokenized inputs:**
 
 **Note:** the inputs should be tokenized by [SentencePiece](https://github.com/google/sentencepiece). 
 You can also use tokenized version of [IWSLT test sets](https://github.com/JoyeBright/DataSelection-NMT/tree/main/Data-Table1/Dev%20and%20Test%20Sets).
