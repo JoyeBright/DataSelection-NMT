@@ -62,7 +62,7 @@ To customize the CTranslate2 functions, read this [API document](https://github.
 
 5\. **Detokenize the outputs:**
 
-**Note:** you need to [detokenize](https://github.com/JoyeBright/DataSelection-NMT/blob/main/Tools/detokenizer.perl) the output with the same sentencepiece model as used in step 3.
+**Note:** you need to [detokenize](https://github.com/JoyeBright/DataSelection-NMT/blob/main/Tools/detokenizer.perl) the output with the same sentencepiece model as used in step 4.
 
 ```bash
 tools/detokenize.perl -no-escape -l fr \
