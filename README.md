@@ -1,10 +1,14 @@
 # Data Selection in NMT
 Welcome to the repository designed based on [FAIR principles](https://en.wikipedia.org/wiki/FAIR_data) for the experiments described in: "Selecting Parallel In-domain Sentences for Neural Machine Translation Using Monolingual Texts".
-## Abstract
-Continuously-growing data volumes lead to larger generic models. Specific use-cases are usually left out, since generic models tend to perform poorly in domain-specific cases. Our work addresses this gap with a method for selecting in-domain data from generic-domain (parallel text) corpora, for the task of machine translation. The proposed method ranks sentences in parallel general-domain data according to their cosine similarity with a monolingual domain-specific data set. We then select the top K sentences with the highest similarity score to train a new machine translation system tuned to the specific in-domain data. Our experimental results show that models trained on this in-domain data outperform models trained on generic or a mixture of generic and domain data. That is, our method selects high-quality domain-specific training instances at low computational cost and data size.
 
 #### The paper got accepted on Dec 6, 2021 and got published on Feb, 2022.
 You can read the paper on [ArXiv](http://arxiv.org/abs/2112.06096), [ResearchGate](https://www.researchgate.net/publication/357013946_Selecting_Parallel_In-domain_Sentences_for_Neural_Machine_Translation_Using_Monolingual_Texts), [Publisher's website](https://www.clinjournal.org/index.php/clinj/article/view/137).
+
+## Abstract
+Continuously-growing data volumes lead to larger generic models. Specific use-cases are usually left out, since generic models tend to perform poorly in domain-specific cases. Our work addresses this gap with a method for selecting in-domain data from generic-domain (parallel text) corpora, for the task of machine translation. The proposed method ranks sentences in parallel general-domain data according to their cosine similarity with a monolingual domain-specific data set. We then select the top K sentences with the highest similarity score to train a new machine translation system tuned to the specific in-domain data. Our experimental results show that models trained on this in-domain data outperform models trained on generic or a mixture of generic and domain data. That is, our method selects high-quality domain-specific training instances at low computational cost and data size.
+
+## Data Selection Tool
+We also developed a Python tool that streamlines the process of selecting domain-specific data from generic corpora and training a domain-specific machine translation model. Our tool is particularly useful in scenarios where there is a dearth of domain-specific data or only monolingual data is available. Moreover, our tool is flexible and can handle varying sizes of domain-specific data. To learn more about this tool, please visit our GitHub repository at https://github.com/JoyeBright/DataSelection-NMT/tree/main/Tools_DS.
 
 ## Our Pre-trained models on Hugging Face
 |System        | Link | System | Link | 
