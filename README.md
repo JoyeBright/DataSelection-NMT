@@ -85,3 +85,18 @@ grep @@ output._file.detok.postprocessd
 - **Javad Pourmostafa**  - [Email](mailto:j.pourmostafa@tilburguniversity.edu), [Website](https://javad.pourmostafa.com)
 - **Dimitar Shterionov** - [Email](mailto:d.shterionov@tilburguniversity.edu), [Website](https://ilk.uvt.nl/~shterion/)
 - **Pieter Spronck**     - [Email](mailto:p.spronck@tilburguniversity.edu), [Website](https://www.spronck.net/)
+
+## Cite the paper
+If you find this repository helpful, feel free to cite our publication:
+```
+@article{Pourmostafa Roshan Sharami_Sterionov_Spronck_2021, 
+title={Selecting Parallel In-domain Sentences for Neural Machine Translation Using Monolingual Texts}, 
+volume={11}, 
+url={https://www.clinjournal.org/clinj/article/view/137}, 
+journal={Computational Linguistics in the Netherlands Journal}, 
+author={Pourmostafa Roshan Sharami, Javad and Sterionov, Dimitar and Spronck, Pieter}, 
+year={2021}, 
+month={Dec.}, 
+pages={213–230} }}
+```
+
