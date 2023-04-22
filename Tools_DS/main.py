@@ -22,7 +22,6 @@ if __name__ == '__main__':
     argParser.add_argument("-id", "--specific", help="the path to domain-specifc corpus", required=True)
     # The fourth argument is the desired number of generated data to be selected
     argParser.add_argument("-n", "--number", type=int, help="your desired number of generarted data to be selected.", required=False)
-    # The fifth argument is the max thread number
     args = argParser.parse_args()
     print("Below are the arguments entered ...")
     print("source-side OOD= %s" % args.generic_src)
