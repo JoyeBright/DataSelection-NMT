@@ -1,4 +1,4 @@
-## Data Selection for MT 
+## Data Selection for Machine Translation 
 A Python Tool for Selecting Domain-Specific Data in Machine Translation.
 ## How to use
 1. If you don't have conda installed on your machine, install it by following the instructions at this link: <br> https://docs.conda.io/projects/conda/en/latest/user-guide/install/<br>
