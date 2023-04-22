@@ -101,7 +101,7 @@ if __name__ == '__main__':
     if Number==None:
         Number=len(ID)
     elif Number > len(ID):
-        raise Exception("Sorry, the desired number is larger than the number of the given ID sentences\n You may want to split your OOD to generate more ID sentences.")
+        raise Exception("Sorry, the desired number exceeds the number of available ID samples. You may want to split your OOD to generate more ID sentences.")
     else:
         None
     queries = ID[:Number]
