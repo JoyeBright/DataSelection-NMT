@@ -9,6 +9,6 @@ A Python Tool for Selecting Domain-Specific Data in Machine Translation.
 ## Details and Tips
 - `usage: main.py [-h] -ood_src GENERIC_SRC -ood_tgt GENERIC_TGT -id SPECIFIC [-n NUMBER]`
 - `-n` is an optional argument while the rest are required. 
-- If the value of `n` exceeds the number of available samples for a specific ID, the tool will generate an exception. This is because the tool selects the top 5 closest sentences from out-of-domain data for each query sentence corresponding to that ID. If you require more domain-specific samples, you should consider dividing your generic corpus into smaller parts and selecting data for each part separately. However, keep in mind that the size and variety of your generic corpus should be sufficient for the tool to generate similar sentences.
+- If the value of `n` exceeds the number of available samples for the domain-specific corpus (ii), the tool will raise an exception. This is because the tool selects the top 5 closest sentences from generic data (i) for each query sentence corresponding to that ID. If you require more domain-specific samples, you should consider dividing your generic corpus into smaller parts and selecting data for each part separately. However, keep in mind that the size and variety of your generic corpus should be sufficient for the tool to generate similar sentences.
 
 
