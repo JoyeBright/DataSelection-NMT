@@ -15,7 +15,7 @@ A Python Tool for Selecting Domain-Specific Data in Machine Translation.
 ## Cite the paper
 We kindly request that you cite both the tool and the paper if you decide to use the tool.
 ```
-Under review for EAMT 2023
+The paper related to the tool is currently being evaluated for EAMT 2023.
 ```
 ```
 @article{Pourmostafa Roshan Sharami_Sterionov_Spronck_2021, 
