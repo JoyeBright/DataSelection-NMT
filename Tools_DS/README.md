@@ -13,7 +13,7 @@ A Python Tool for Selecting Domain-Specific Data in Machine Translation.
 - The original model had a word embedding dimension of 768, which might be too computationally intensive for some users. As a solution, we decreased the embedding dimensions to 32. You can access the final model at our HF repository using this [URL](https://huggingface.co/joyebright/stsb-xlm-r-multilingual-32dim). However, if your system can handle the model with 768 dimensions, we suggest using the original model that can be found at this link: https://huggingface.co/sentence-transformers/stsb-xlm-r-multilingual. The tool is configured to use the 32-dimensional model as the default option.
 - We advise utilizing a single GPU instead of multiple GPUs to avoid potential conflicts that may arise from loading sentences across two separate GPUs. To specify CUDA device X, you would use this command: `export CUDA_VISIBLE_DEVICES=X`
 ## Cite the paper
-If you use the tool, please cite the paper and the tool both:
+We kindly request that you cite both the tool and the paper if you decide to use the tool.
 ```
 Under review for EAMT 2023
 ```
