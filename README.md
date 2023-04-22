@@ -7,7 +7,7 @@ Continuously-growing data volumes lead to larger generic models. Specific use-ca
 You can read the paper on [ArXiv](http://arxiv.org/abs/2112.06096), [ResearchGate](https://www.researchgate.net/publication/357013946_Selecting_Parallel_In-domain_Sentences_for_Neural_Machine_Translation_Using_Monolingual_Texts), [Publisher's website](https://www.clinjournal.org/index.php/clinj/article/view/137).
 
 ## Our Pre-trained models on Hugging Face
-|Systems        | Link | Systems | Link | 
+|System        | Link | System | Link | 
 |:-------------:|:----:|:-------:|:----:|
 |Top1         |[Download](https://huggingface.co/joyebright/Top1-with-without-mixing/resolve/main/Top1-withBPE-step-5000.pt)|Top1|[Download](https://huggingface.co/joyebright/Top1-with-without-mixing/resolve/main/Top1-withBPE-step-5000.pt)|  
 |Top2+Top1    |[Download](https://huggingface.co/joyebright/Top2-with-mixing/resolve/main/top2-withBPE-step-10000.pt)|Top2|[Download](https://huggingface.co/joyebright/Top2-without-mixing/resolve/main/top2-withBPE-step-5000.pt)|
