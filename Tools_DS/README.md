@@ -12,4 +12,20 @@ A Python Tool for Selecting Domain-Specific Data in Machine Translation.
 - If the value of `n` exceeds the number of available samples for the domain-specific corpus (ii), the tool will raise an exception. This is because the tool selects the top 5 closest sentences from generic data (i) for each query sentence corresponding to that ID. If you require more domain-specific samples, you should consider dividing your generic corpus into smaller parts and selecting data for each part separately. However, keep in mind that the size and variety of your generic corpus should be sufficient for the tool to generate similar sentences.
 - The original model had a word embedding dimension of 768, which might be too computationally intensive for some users. As a solution, we decreased the embedding dimensions to 32. You can access the final model at our HF repository using this [URL](https://huggingface.co/joyebright/stsb-xlm-r-multilingual-32dim). However, if your system can handle the model with 768 dimensions, we suggest using the original model that can be found at this link: https://huggingface.co/sentence-transformers/stsb-xlm-r-multilingual. The tool is configured to use the 32-dimensional model as the default option.
 - We advise utilizing a single GPU instead of multiple GPUs to avoid potential conflicts that may arise from loading sentences across two separate GPUs. To specify CUDA device X, you would use this command: `export CUDA_VISIBLE_DEVICES=X`
+## Cite the paper
+If you use the tool, please cite the paper and the tool both:
+```
+Under review for EAMT 2023
+```
+```
+@article{Pourmostafa Roshan Sharami_Sterionov_Spronck_2021, 
+title={Selecting Parallel In-domain Sentences for Neural Machine Translation Using Monolingual Texts}, 
+volume={11}, 
+url={https://www.clinjournal.org/clinj/article/view/137}, 
+journal={Computational Linguistics in the Netherlands Journal}, 
+author={Pourmostafa Roshan Sharami, Javad and Sterionov, Dimitar and Spronck, Pieter}, 
+year={2021}, 
+month={Dec.}, 
+pages={213–230} }}
+```
 
