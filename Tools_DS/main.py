@@ -21,7 +21,7 @@ if __name__ == '__main__':
     # The third argument is the path to ID
     argParser.add_argument("-id", "--specific", help="the path to domain-specific corpus", required=True)
     # The fourth argument is the desired number of generated data to be selected
-    argParser.add_argument("-n", "--number", type=int, help="your desired number of generarted data to be selected.", required=False)
+    argParser.add_argument("-n", "--number", type=int, help="your desired number of generated data to be selected.", required=False)
     args = argParser.parse_args()
     print("Below are the arguments entered ...")
     print("source-side OOD= %s" % args.generic_src)
