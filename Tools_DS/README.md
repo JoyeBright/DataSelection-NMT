@@ -15,7 +15,9 @@ A Python Tool for Selecting Domain-Specific Data in Machine Translation.
 ## Cite the paper
 We kindly request that you cite both the tool and the paper if you decide to use the tool.
 ```
-Has been accepted to the 1st edition of the Workshop on Open Community-Driven Machine Translation (CrowdMT 2023).  
+Go accepted to the 1st edition of the Workshop on Open Community-Driven Machine Translation (CrowdMT 2023)
+https://macocu.eu/workshop
+The citation information will be released soon.
 ```
 ```
 @article{Pourmostafa Roshan Sharami_Sterionov_Spronck_2021, 
