@@ -17,7 +17,7 @@ We kindly request that you cite both the tool and the paper if you decide to use
 ```
 Go accepted to the 1st edition of the Workshop on Open Community-Driven Machine Translation (CrowdMT 2023)
 https://macocu.eu/workshop
-The citation information will be released soon.
+The citation information will be updated soon.
 ```
 ```
 @article{Pourmostafa Roshan Sharami_Sterionov_Spronck_2021, 
