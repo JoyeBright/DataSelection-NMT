@@ -5,10 +5,11 @@ from tqdm import tqdm
 import numpy as np
 from sentence_transformers import SentenceTransformer, util
 import logging
-logging.basicConfig(level = logging.INFO)
+# logging.basicConfig(level = logging.INFO)
 import pickle
 import numpy as np
 import pandas as pd
+import math
 
 if __name__ == '__main__':
     #----------------------------------
@@ -97,59 +98,75 @@ if __name__ == '__main__':
         content = f.readlines()
         content = [x.strip() for x in content]
     ID = content
+    #---------------Chunks----------------
+    def split(list_a, chunk_size):
+        for i in range(0, len(list_a), chunk_size):
+            yield list_a[i:i + chunk_size]
     #-------------------------------------
-    if Number==None:
-        Number=len(ID)
+    if Number == None:
+        Number = len(ID)
+        splits_raw = 1
+        splits = M
     elif Number > len(ID):
-        raise Exception("Sorry, the desired number exceeds the number of available ID samples. You may want to split your OOD to generate more ID sentences.")
+        splits_raw = math.ceil(Number/len(ID))
+        splits = math.ceil(M/splits_raw)
+        print("The desired number exceeds the number of available ID samples. The tool splits your OOD into ", splits, " to generate more ID sentences.")
     else:
-        None
+        splits_raw = 1
+        splits = M
+    #-------------------------------------    
     queries = ID[:Number]
+    #-------------------------------------
+    OOD_sentences_source = list(split(OOD_sentences_source, splits))
+    OOD_sentences_target = list(split(OOD_sentences_target, splits))
+    OOD_embeddings = list(split(OOD_embeddings,splits))
+    #-------------------------------------
     print("ID length: ", len(queries))
     #-------------------------------------
-    embedder = SentenceTransformer('joyebright/stsb-xlm-r-multilingual-32dim')
-    top_k = min(5, len(OOD_sentences_source))
-    dat = pd.DataFrame([])
-    cols = ['Query', 'top1', 'top1_tgt', 'top1_score',
-                     'top2', 'top2_tgt', 'top2_score', 
-                     'top3', 'top3_tgt', 'top3_score', 
-                     'top4', 'top4_tgt', 'top4_score', 
-                     'top5', 'top5_tgt', 'top5_score']
+    for i in range(0, splits_raw):
+        print("Split ", i)
+        embedder = SentenceTransformer('joyebright/stsb-xlm-r-multilingual-32dim')
+        top_k = min(5, len(OOD_sentences_source[i]))
+        dat = pd.DataFrame([])
+        cols = ['Query','top1', 'top1_trg', 'top1_score',
+                        'top2', 'top2_trg', 'top2_score', 
+                        'top3', 'top3_trg', 'top3_score', 
+                        'top4', 'top4_trg', 'top4_score', 
+                        'top5', 'top5_trg', 'top5_score']
 
+        dat = pd.DataFrame(columns = cols)
+        index = 0
+        for query in queries:  
+            print(index)  
+            index+=1
+            query_embedding = embedder.encode(query, convert_to_tensor=True)
+            # We use cosine-similarity and torch.topk to find the highest 5 scores
+            cos_scores = util.pytorch_cos_sim(query_embedding, OOD_embeddings[i])[0]
+            top_results = torch.topk(cos_scores, k=top_k)
+            print(query)
+            print(OOD_sentences_source[i][top_results[1][0]])
+            print(OOD_sentences_target[i][top_results[1][0]])
 
-    dat = pd.DataFrame(columns = cols)
-    index = 0
-    for query in queries:  
-        print(index)  
-        index+=1
-        query_embedding = embedder.encode(query, convert_to_tensor=True)
-        # We use cosine-similarity and torch.topk to find the highest 5 scores
-        cos_scores = util.pytorch_cos_sim(query_embedding, OOD_embeddings)[0]
-        top_results = torch.topk(cos_scores, k=top_k)
-        print(query)
-        print(OOD_sentences_source[top_results[1][0]])
-        print(OOD_sentences_target[top_results[1][0]])
-
-        dat = dat.append({'Query': query,
-                          
-                        'top1':OOD_sentences_source[top_results[1][0]],
-                        'top1_tgt':OOD_sentences_target[top_results[1][0]],
-                        'top1_score': "(Score: {:.4f})".format(top_results[0][0]),
+            dat = dat.append({'Query': query,
+                            
+                            'top1':OOD_sentences_source[i][top_results[1][0]],
+                            'top1_trg':OOD_sentences_target[i][top_results[1][0]],
+                            'top1_score': "(Score: {:.4f})".format(top_results[0][0]),
+                            
+                            'top2':OOD_sentences_source[i][top_results[1][1]],
+                            'top2_trg':OOD_sentences_target[i][top_results[1][1]],
+                            'top2_score': "(Score: {:.4f})".format(top_results[0][1]),
                         
-                        'top2':OOD_sentences_source[top_results[1][1]],
-                        'top2_tgt':OOD_sentences_target[top_results[1][1]],
-                        'top2_score': "(Score: {:.4f})".format(top_results[0][1]),
-                    
-                        'top3':OOD_sentences_source[top_results[1][2]],
-                        'top3_tgt':OOD_sentences_target[top_results[1][2]],
-                        'top3_score': "(Score: {:.4f})".format(top_results[0][2]),
-                    
-                        'top4':OOD_sentences_source[top_results[1][3]],
-                        'top4_tgt':OOD_sentences_target[top_results[1][3]],
-                        'top4_score': "(Score: {:.4f})".format(top_results[0][3]),
-                    
-                        'top5':OOD_sentences_source[top_results[1][4]],
-                        'top5_tgt':OOD_sentences_target[top_results[1][4]],
-                        'top5_score': "(Score: {:.4f})".format(top_results[0][4])}, ignore_index=True) 
-    print("Done...")
-    dat.to_csv('final.csv',index=True)
+                            'top3':OOD_sentences_source[i][top_results[1][2]],
+                            'top3_trg':OOD_sentences_target[i][top_results[1][2]],
+                            'top3_score': "(Score: {:.4f})".format(top_results[0][2]),
+                        
+                            'top4':OOD_sentences_source[i][top_results[1][3]],
+                            'top4_trg':OOD_sentences_target[i][top_results[1][3]],
+                            'top4_score': "(Score: {:.4f})".format(top_results[0][3]),
+                        
+                            'top5':OOD_sentences_source[i][top_results[1][4]],
+                            'top5_trg':OOD_sentences_target[i][top_results[1][4]],
+                            'top5_score': "(Score: {:.4f})".format(top_results[0][4])}, ignore_index=True) 
+        print("Done...")
+        dat.to_csv("final_"+str(i+1)+".csv",index=True)
