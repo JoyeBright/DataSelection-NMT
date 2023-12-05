@@ -10,6 +10,7 @@ import pickle
 import numpy as np
 import pandas as pd
 import math
+import os
 
 if __name__ == '__main__':
     #----------------------------------
@@ -22,20 +23,29 @@ if __name__ == '__main__':
     # The third argument is the path to ID
     argParser.add_argument("-id", "--specific", help="the path to domain-specific corpus", required=True)
     # The fourth argument is the desired number of generated data to be selected
+    argParser.add_argument("-k", "--k", type=int, default = 5, help="your desired number of samples selected per entry.", required=False)
     argParser.add_argument("-n", "--number", type=int, help="your desired number of generated data to be selected.", required=False)
+    argParser.add_argument("-dis", "--dissimilar", action="store_true", help="To find similar or dissimilar instances.", required=False)
+    argParser.add_argument("-fn", "--filename", type=str, help="the output file name", required=False)
     args = argParser.parse_args()
     print("Below are the arguments entered ...")
     print("source-side OOD= %s" % args.generic_src)
     print("target-side OOD= %s" % args.generic_tgt)
     print("ID= %s" % args.specific)
+    print("K= %s" % args.k)
     print("N= %s" % args.number)
+    print("Dissimilar= %s" % args.dissimilar)
+    print("FileName= %s" % args.filename)
     #----------------------------------
     # Embedding OOD
     #----------------------------------
     OOD_src = args.generic_src
     OOD_tgt = args.generic_tgt
     ID = args.specific
+    K = args.k
     Number = args.number
+    Dissimilar = args.dissimilar
+    FileName = args.filename
     #----------------------------------
     with open(OOD_src, 'rb') as e:
         content = e.readlines()
@@ -59,29 +69,31 @@ if __name__ == '__main__':
     #-------------------------------------
     OOD_sentences = source
     # Invoke the model
+    print("Load the model ...")
     model = SentenceTransformer('joyebright/stsb-xlm-r-multilingual-32dim', device='cuda')
-    # Start the multi-process pool on all available CUDA devices
-    pool = model.start_multi_process_pool()
-    # Compute the embeddings using the multi-process pool
-    emb = model.encode_multi_process(OOD_sentences, pool)
-    print("Embeddings computed shape:", emb.shape)
-    # Optional: Stop the proccesses in the pool
-    model.stop_multi_process_pool(pool)
     #-------------------------------------
-    print("The OOD is being saved into a file named: 32dim.pkl")
     # Save shuffle for ODD parallel corpora
-    with open('32dim.pkl', 'wb') as pickle_file:
-        pickle.dump({'source_sentences': source, 'source_embeddings': emb, 'target_sentences': target}, pickle_file, protocol=pickle.HIGHEST_PROTOCOL)
-    #-------------------------------------
-    print("A sample of OOD: ", OOD_sentences[0])
-    print("A sample of OOD embedding vector: ", emb[0][:])
+    if not os.path.exists('OOD.pkl'):
+        # Start the multi-process pool on all available CUDA devices
+        pool = model.start_multi_process_pool()
+        # Compute the embeddings using the multi-process pool
+        emb = model.encode_multi_process(OOD_sentences, pool)
+        print("Embeddings computed shape:", emb.shape)
+        # Optional: Stop the proccesses in the pool
+        model.stop_multi_process_pool(pool)
+        print("The OOD is being saved into a file named, OOD.pkl")
+        with open('OOD.pkl', 'wb') as pickle_file:
+            pickle.dump({'source_sentences': source, 'source_embeddings': emb, 'target_sentences': target}, pickle_file, protocol=pickle.HIGHEST_PROTOCOL)
     #-------------------------------------
     # Loading the pkl file
-    with open('32dim.pkl', 'rb') as pickle_load:
+    with open('OOD.pkl', 'rb') as pickle_load:
         OOD_data = pickle.load(pickle_load)
         OOD_sentences_source = OOD_data['source_sentences']
         OOD_embeddings = OOD_data['source_embeddings']
         OOD_sentences_target = OOD_data['target_sentences']
+    #-------------------------------------
+    print("A sample of OOD: ", OOD_sentences[0])
+    print("A sample of OOD embedding vector: ", OOD_embeddings[0][:])
     #-------------------------------------
     # Stats
     M = len(OOD_sentences_source)
@@ -126,13 +138,14 @@ if __name__ == '__main__':
     for i in range(0, splits_raw):
         print("Split ", i)
         embedder = SentenceTransformer('joyebright/stsb-xlm-r-multilingual-32dim')
-        top_k = min(5, len(OOD_sentences_source[i]))
+        top_k = min(K, len(OOD_sentences_source[i]))
         dat = pd.DataFrame([])
-        cols = ['Query','top1', 'top1_trg', 'top1_score',
-                        'top2', 'top2_trg', 'top2_score', 
-                        'top3', 'top3_trg', 'top3_score', 
-                        'top4', 'top4_trg', 'top4_score', 
-                        'top5', 'top5_trg', 'top5_score']
+        
+        cols = ['Query']
+        for j in range(0, K):
+            cols.append('top'+str(j+1))
+            cols.append('top'+str(j+1)+'_trg'+str(j+1))
+            cols.append('top'+str(j+1)+'_score'+str(j+1))
 
         dat = pd.DataFrame(columns = cols)
         index = 0
@@ -142,31 +155,27 @@ if __name__ == '__main__':
             query_embedding = embedder.encode(query, convert_to_tensor=True)
             # We use cosine-similarity and torch.topk to find the highest 5 scores
             cos_scores = util.pytorch_cos_sim(query_embedding, OOD_embeddings[i])[0]
-            top_results = torch.topk(cos_scores, k=top_k)
+            if Dissimilar == False:
+                top_results = torch.topk(cos_scores, k=top_k)
+            if Dissimilar == True:
+                top_results = torch.topk(cos_scores, k=top_k, largest=False)
             print(query)
             print(OOD_sentences_source[i][top_results[1][0]])
             print(OOD_sentences_target[i][top_results[1][0]])
 
-            dat = dat.append({'Query': query,
-                            
-                            'top1':OOD_sentences_source[i][top_results[1][0]],
-                            'top1_trg':OOD_sentences_target[i][top_results[1][0]],
-                            'top1_score': "(Score: {:.4f})".format(top_results[0][0]),
-                            
-                            'top2':OOD_sentences_source[i][top_results[1][1]],
-                            'top2_trg':OOD_sentences_target[i][top_results[1][1]],
-                            'top2_score': "(Score: {:.4f})".format(top_results[0][1]),
-                        
-                            'top3':OOD_sentences_source[i][top_results[1][2]],
-                            'top3_trg':OOD_sentences_target[i][top_results[1][2]],
-                            'top3_score': "(Score: {:.4f})".format(top_results[0][2]),
-                        
-                            'top4':OOD_sentences_source[i][top_results[1][3]],
-                            'top4_trg':OOD_sentences_target[i][top_results[1][3]],
-                            'top4_score': "(Score: {:.4f})".format(top_results[0][3]),
-                        
-                            'top5':OOD_sentences_source[i][top_results[1][4]],
-                            'top5_trg':OOD_sentences_target[i][top_results[1][4]],
-                            'top5_score': "(Score: {:.4f})".format(top_results[0][4])}, ignore_index=True) 
-        print("Done...")
-        dat.to_csv("final_"+str(i+1)+".csv",index=True)
+            S =[]
+            S.append(query)
+            for n in range(0, K):
+                S.append(OOD_sentences_source[i][top_results[1][n]])
+                S.append(OOD_sentences_target[i][top_results[1][n]])
+                S.append("(Score: {:.4f})".format(top_results[0][n]))
+
+            new_S = pd.Series(S, index=dat.columns)
+            dat = dat._append(new_S, ignore_index=True)
+
+        print("We are done ...")
+
+        if FileName == None:
+            dat.to_csv("final_similar_" + str(i+1)+".csv",index=True)
+        else:
+            dat.to_csv(FileName + "_" + str(i+1) + ".csv",index=True)
