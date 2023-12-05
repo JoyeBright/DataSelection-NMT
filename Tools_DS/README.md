@@ -5,9 +5,7 @@ A Python Tool for Selecting Domain-Specific Data in Machine Translation.
 1. If you don't have conda installed on your machine, install it by following the instructions at this link: <br> https://docs.conda.io/projects/conda/en/latest/user-guide/install/<br>
 2. Create a new environment, next activate it and finally install the required packages by running the command:<br>
 `conda create --name <env> --file requirements.txt`<br>
-3. The tool's operation requires three inputs: (i) a parallel generic corpus-source, (ii) a parallel generic corpus-target (iii) a monolingual domain-specific corpus. To start the data selection process, run the command:
-
-**`python main.py -ood_src [i-source] -ood_tgt [ii-target] -id [iii] -k [optional] -n [optional] -dis [optional] -fn [optional]`**
+3. The tool's operation requires three inputs: (i) a parallel generic corpus-source, (ii) a parallel generic corpus-target (iii) a monolingual domain-specific corpus. To start the data selection process, run the command: **`python main.py -ood_src [i-source] -ood_tgt [ii-target] -id [iii] -k [optional] -n [optional] -dis [optional] -fn [optional]`**
 ## Details and Tips
 - `usage: main.py [-h] -ood_src GENERIC_SRC -ood_tgt GENERIC_TGT -id SPECIFIC [-k K] [-n NUMBER] [-dis] [-fn FILENAME]`
 - `-k, -n, -dis, -fn` are optional arguments, while the rest are required. 
