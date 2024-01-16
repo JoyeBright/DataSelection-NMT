@@ -37,14 +37,5 @@ https://aclanthology.org/2023.crowdmt-1.4/
     pages = "29--30",
 }
 
-@article{Pourmostafa Roshan Sharami_Sterionov_Spronck_2021, 
-title={Selecting Parallel In-domain Sentences for Neural Machine Translation Using Monolingual Texts}, 
-volume={11}, 
-url={https://www.clinjournal.org/clinj/article/view/137}, 
-journal={Computational Linguistics in the Netherlands Journal}, 
-author={Pourmostafa Roshan Sharami, Javad and Sterionov, Dimitar and Spronck, Pieter}, 
-year={2021}, 
-month={Dec.}, 
-pages={213–230} }}
 ```
 
