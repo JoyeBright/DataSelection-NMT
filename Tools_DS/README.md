@@ -13,14 +13,28 @@ A Python Tool for Selecting Domain-Specific Data in Machine Translation.
 - The original model had a word embedding dimension of 768, which might be too computationally intensive for some users. As a solution, we decreased the embedding dimensions to 32. You can access the final model at our HF repository using this [URL](https://huggingface.co/joyebright/stsb-xlm-r-multilingual-32dim). However, if your system can handle the model with 768 dimensions, we suggest using the original model that can be found at this link: https://huggingface.co/sentence-transformers/stsb-xlm-r-multilingual. The tool is configured to use the 32-dimensional model as the default option.
 - We advise utilizing a single GPU instead of multiple GPUs to avoid potential conflicts that may arise from loading sentences across two separate GPUs. To specify CUDA device X, you would use this command: `export CUDA_VISIBLE_DEVICES=X`
 ## Cite the paper
-Please cite both the tool's paper and the original research paper (find below) if you decide to use the tool.
+https://aclanthology.org/2023.crowdmt-1.4/
 ```
-@inproceedings{sharami2023python,
-  title={A Python Tool for Selecting Domain-Specific Data in Machine Translation},
-  author={Sharami, Javad Pourmostafa Roshan and Shterionov, Dimitar and Spronck, Pieter},
-  booktitle={1st Workshop on Open Community-Driven Machine Translation},
-  pages={29},
-  year={2023}
+@inproceedings{sharami-etal-2023-python,
+    title = "A {P}ython Tool for Selecting Domain-Specific Data in Machine Translation",
+    author = "Sharami, Javad Pourmostafa Roshan  and
+      Shterionov, Dimitar  and
+      Spronck, Pieter",
+    editor = {Espl{\`a}-Gomis, Miquel  and
+      Forcada, Mikel L.  and
+      Kuzman, Taja  and
+      Ljube{\v{s}}i{\'c}, Nikola  and
+      van Noord, Rik  and
+      Ram{\'\i}rez-S{\'a}nchez, Gema  and
+      Tiedemann, J{\"o}rg  and
+      Toral, Antonio},
+    booktitle = "Proceedings of the 1st Workshop on Open Community-Driven Machine Translation",
+    month = jun,
+    year = "2023",
+    address = "Tampere, Finland",
+    publisher = "European Association for Machine Translation",
+    url = "https://aclanthology.org/2023.crowdmt-1.4",
+    pages = "29--30",
 }
 
 @article{Pourmostafa Roshan Sharami_Sterionov_Spronck_2021, 
