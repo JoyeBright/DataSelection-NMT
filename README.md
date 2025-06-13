@@ -16,7 +16,7 @@ We developed a **Python tool** that automates the process of domain-specific sen
 - You want to fine-tune models efficiently without massive retraining
 - You need a lightweight, scalable solution
 
-🔗 **[Visit the tool’s standalone repository →](https://github.com/JoyeBright/mt-domain-selector)**  
+🔗 **[Visit the tool’s standalone repository →](https://github.com/JoyeBright/domain-adapt-mt)**  
 The tool supports customizable selection size, sentence embedding models (e.g., SBERT), and single-GPU usage.  
 Check its README for installation, usage examples, and integration instructions.
 
