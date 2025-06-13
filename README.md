@@ -7,8 +7,21 @@ You can read the paper on [ArXiv](http://arxiv.org/abs/2112.06096), [ResearchGat
 ## Abstract
 Continuously-growing data volumes lead to larger generic models. Specific use-cases are usually left out, since generic models tend to perform poorly in domain-specific cases. Our work addresses this gap with a method for selecting in-domain data from generic-domain (parallel text) corpora, for the task of machine translation. The proposed method ranks sentences in parallel general-domain data according to their cosine similarity with a monolingual domain-specific data set. We then select the top K sentences with the highest similarity score to train a new machine translation system tuned to the specific in-domain data. Our experimental results show that models trained on this in-domain data outperform models trained on generic or a mixture of generic and domain data. That is, our method selects high-quality domain-specific training instances at low computational cost and data size.
 
-## Data Selection Tool
-We also developed a Python tool that streamlines the process of selecting domain-specific data from generic corpora and training a domain-specific machine translation model. Our tool is particularly useful in scenarios where there is a dearth of domain-specific data or only monolingual data is available. Moreover, our tool is flexible and can handle varying sizes of domain-specific data. To learn more about this tool, please visit our GitHub repository at https://github.com/JoyeBright/DataSelection-NMT/tree/main/Tools_DS.
+
+## 🛠️ Data Selection Tool (Now in a Separate Repository)
+
+We developed a **Python tool** that automates the process of domain-specific sentence selection using semantic similarity. It is especially useful when:
+
+- You only have **monolingual in-domain data**
+- You want to fine-tune models efficiently without massive retraining
+- You need a lightweight, scalable solution
+
+🔗 **[Visit the tool’s standalone repository →](https://github.com/JoyeBright/mt-domain-selector)**  
+The tool supports customizable selection size, sentence embedding models (e.g., SBERT), and single-GPU usage.  
+Check its README for installation, usage examples, and integration instructions.
+
+---
+
 
 ## Our Pre-trained models on Hugging Face
 |System        | Link | System | Link | 
