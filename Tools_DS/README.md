@@ -3,10 +3,10 @@ A Python Tool for Selecting Domain-Specific Data in Machine Translation.
 
 ---
 
-## 🚀 New Repository
+## New Repository
 
 ⚠️ **Note:** This tool now has its own dedicated repository. Please visit the main project page for the latest updates and detailed documentation:  
-👉 [https://github.com/JoyeBright/domain-adapt-mt](https://github.com/JoyeBright/domain-adapt-mt)
+[https://github.com/JoyeBright/domain-adapt-mt](https://github.com/JoyeBright/domain-adapt-mt)
 
 ---
 
